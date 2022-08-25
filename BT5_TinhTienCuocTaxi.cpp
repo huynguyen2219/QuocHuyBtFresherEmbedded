@@ -1,45 +1,43 @@
 #include <iostream>
 using namespace std;
 
-void Ham_sap_xep_tang_dan(int arr[],int n)
+int Tinh_Cuoc_Taxi(int x) //Ham tinh tien cuoc taxi dua vo so km
 {
-	for (int i = 0; i < n-1; i++)
+	sum = 5000; // khoi tao bien sum luu so tien cuoc km dau tien
+	if (x>0 && x<=1)
 	{
-		for (int j = i + 1; j <n; j++)
-		{
-			if (arr[j]<arr[i])
-			{
-				int temp;
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-		}
+		return sum;
 	}
-}
-void Ham_sap_xep_giam_dan(int arr[], int n)
-{
-	for (int i = 0; i < n - 1; i++)
+	else if (x > 1 && x <= 31)
 	{
-		for (int j = i + 1; j < n; j++)
-		{
-			if (arr[j] > arr[i])
-			{
-				int temp;
-				temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-			}
-		}
+		sum += 4000 * (x - 1);
+		return sum;
 	}
+	else
+	{
+		sum += 4000 * 30 + 3000 * (x - 31);
+		return sum;
+	}
+
+
 }
+
 int main()
 {
-	int arr[10] = { 15,20,1,9,8,66,69,70,112,4 };
-	int n = 10; //so phan tu
-	Ham_sap_xep_tang_dan(arr);
-	for (int i = 0; i < n; i++)
+	do
 	{
-		cout << arr[i] << " ";
-	}
+		int n; // so km 
+		cout << "\n\n\tNhap so km di duoc: ";
+		cin >> n;
+		if (n <= 0)
+		{
+			cout<<"So km nhap vao khong hop le. Xin moi nhap lai"
+		}
+	} while (n <= 0);
+
+	int sotien = Tinh_Cuoc_Taxi(n);
+	cout << "\n\n\tSo tien cuoc taxi cho " << n << " km la: " << sotien << "d";
+	
+
+
 }
